@@ -1,3 +1,6 @@
+from typing import Union
+
+
 class Distance:
     """
     Represents a distance measurement in kilometers.
@@ -53,7 +56,7 @@ class Distance:
         """
         return f"Distance(km={self.km})"
 
-    def __add__(self, other: "Distance") -> "Distance":
+    def __add__(self, other: object) -> "Distance":
         """
         Adds two Distance objects or a Distance object
         and a numeric value.
@@ -76,7 +79,7 @@ class Distance:
             return Distance(self.km + other.km)
         return Distance(self.km + other)
 
-    def __iadd__(self, other: "Distance") -> "Distance":
+    def __iadd__(self, other: Union["Distance", int, float]) -> "Distance":
         """
         Modifies the current Distance object by incrementing
         its "km" value with the given "other" value. If "other"
@@ -97,7 +100,7 @@ class Distance:
             self.km += other
         return self
 
-    def __mul__(self, other: "Distance") -> "Distance":
+    def __mul__(self, other: Union["Distance", int, float]) -> "Distance":
         """
         Multiplies the current Distance instance by a given
         numeric factor.
@@ -132,7 +135,7 @@ class Distance:
         result = self.km / other
         return Distance(round(result, 2))
 
-    def __lt__(self, other: "Distance") -> bool:
+    def __lt__(self, other: Union["Distance", int, float]) -> bool:
         """
         Compares the current Distance object with another
         Distance object or a numeric value to determine
@@ -151,7 +154,7 @@ class Distance:
             return self.km < other.km
         return self.km < other
 
-    def __gt__(self, other: "Distance") -> bool:
+    def __gt__(self, other: Union["Distance", int, float]) -> bool:
         """
         Compares the current Distance object with another
         object to determine if the current Distance is
@@ -169,7 +172,7 @@ class Distance:
             return self.km > other.km
         return self.km > other
 
-    def __eq__(self, other: "Distance") -> bool:
+    def __eq__(self, other: Union["Distance", int, float]) -> bool:
         """
         Compares two distances for equality.
 
@@ -191,7 +194,7 @@ class Distance:
             return self.km == other.km
         return self.km == other
 
-    def __le__(self, other: "Distance") -> bool:
+    def __le__(self, other: Union["Distance", int, float]) -> bool:
         """
         Determines if the current Distance object is less
         than or equal to another distance or a numeric value.
@@ -207,7 +210,7 @@ class Distance:
             return self.km <= other.km
         return self.km <= other
 
-    def __ge__(self, other: "Distance") -> bool:
+    def __ge__(self, other: Union["Distance", int, float]) -> bool:
         """
         Checks if this Distance object is greater than or equal
         to another Distance object or a numeric value.
